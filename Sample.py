@@ -1,4 +1,3 @@
-import col_of_def.dataset as dataset
 import torch.utils.data as data
 import torch
 import torchvision
@@ -28,7 +27,7 @@ def make_datapath_list_for_Kodak(rootpath):
     return val_img_list, val_anno_list
 
 def prepare_dataset_Kodak(batch_size=1,rootpath = "./Kodak"):
-    val_img_list, val_anno_list = dataset.make_datapath_list_for_Kodak(rootpath=rootpath)
+    val_img_list, val_anno_list = make_datapath_list_for_Kodak(rootpath=rootpath)
     val_dataset = KodakDataset(val_img_list, val_anno_list, phase="test")
 
     val_dataloader = data.DataLoader(val_dataset, batch_size=batch_size, shuffle=False, pin_memory=True, num_workers=1)
