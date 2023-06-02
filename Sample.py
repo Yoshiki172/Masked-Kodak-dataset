@@ -54,8 +54,6 @@ class KodakDataset(data.Dataset):
        
 
     def pull_item(self, index):
-        transform = transforms.Compose([
-        ])
         # 1. Load Image
         image_file_path = self.img_list[index]
         img = Image.open(image_file_path)   # [Height][Width][channnel]
@@ -65,8 +63,6 @@ class KodakDataset(data.Dataset):
         anno_class_img = Image.open(anno_file_path)  
         anno_class_img = anno_class_img.convert("L").convert("RGB")
         anno_class_img = torchvision.transforms.functional.to_tensor(anno_class_img)
-        img = transform(img)
-        anno_class_img = transform(anno_class_img)
         return img, anno_class_img
     
 if __name__ == "__main__":
